@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using TMPro;
 
 public class SpiderStateManager : MonoBehaviour
@@ -18,11 +19,16 @@ public class SpiderStateManager : MonoBehaviour
 
     public TextMeshProUGUI spiderMoodText;
 
+    public Image spiderMood;
+    public Sprite[] moods;
+
+    public Animator spiderAnimator;
+
 
     // Start is called before the first frame update
     void Start()
     {
-        spiderMoodText = FindObjectOfType<TextMeshProUGUI>();
+        //spiderMoodText = FindObjectOfType<TextMeshProUGUI>();
 
         //spiderMoodText.text = "Happy!";
 

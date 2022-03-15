@@ -1976,6 +1976,7 @@ MonoBehaviour:
   nextState: 1
   moodChangeFrequency: 5
   spiderMoodText: {fileID: 937100465}
+  spiderAnimator: {fileID: 0}
 --- !u!1 &1766912990
 GameObject:
   m_ObjectHideFlags: 0

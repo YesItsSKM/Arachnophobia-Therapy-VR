@@ -5,17 +5,24 @@ using UnityEngine.XR;
 
 public class SpiderSadState : SpiderBaseState
 {
-    
 
     public override void EnterState(SpiderStateManager spiderStateManager)
     {
         Debug.Log("Sad State Entered.");
 
         spiderStateManager.spiderMoodText.text = "Sad";
+
+        spiderStateManager.spiderMood.sprite = spiderStateManager.moods[1];
+
+        //spiderStateManager.spiderMood.sprite = "";
+
+        spiderStateManager.spiderAnimator.Play("LowerBUpdate");
     }
 
     public override void UpdateState(SpiderStateManager spiderStateManager)
     {
+
+
         if (spiderStateManager.player.leftController.TryGetFeatureValue(CommonUsages.triggerButton, out bool triggerValue) && triggerValue)
         {
             spiderStateManager.SwitchStates(spiderStateManager.happyState);

@@ -10,6 +10,10 @@ public class SpiderHappyState : SpiderBaseState
         Debug.Log("Happy State Entered.");
 
         spiderStateManager.spiderMoodText.text = "Happy!";
+
+        spiderStateManager.spiderMood.sprite = spiderStateManager.moods[2];
+
+        spiderStateManager.spiderAnimator.Play("Jump");
     }
 
     public override void UpdateState(SpiderStateManager spiderStateManager)

@@ -10,6 +10,10 @@ public class SpiderIdleState : SpiderBaseState
         Debug.Log("Idle State Entered.");
 
         spiderStateManager.spiderMoodText.text = "Idle";
+
+        spiderStateManager.spiderMood.sprite = spiderStateManager.moods[0];
+
+        spiderStateManager.spiderAnimator.Play("Idle");
     }
 
     public override void UpdateState(SpiderStateManager spiderStateManager)
