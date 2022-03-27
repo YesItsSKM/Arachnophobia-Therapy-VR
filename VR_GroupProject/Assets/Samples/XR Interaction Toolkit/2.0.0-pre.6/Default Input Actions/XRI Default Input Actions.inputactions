@@ -1083,17 +1083,6 @@
                     "action": "UI Press Value",
                     "isComposite": false,
                     "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "ebec84dc-c71c-4867-8baf-cce9fda18ad7",
-                    "path": "<XRController>{RightHand}/primary2DAxis",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "Move",
-                    "isComposite": false,
-                    "isPartOfComposite": false
                 }
             ]
         }

@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
@@ -75,7 +73,7 @@ public class SpiderStateManager : MonoBehaviour
                 break;
 
             case 3:
-                SwitchStates(happyState);
+                //SwitchStates(happyState);
                 break;
 
             default:

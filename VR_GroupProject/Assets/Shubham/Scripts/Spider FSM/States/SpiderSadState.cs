@@ -1,7 +1,6 @@
 // State #2
 
 using UnityEngine;
-using UnityEngine.XR;
 
 public class SpiderSadState : SpiderBaseState
 {
@@ -21,8 +20,7 @@ public class SpiderSadState : SpiderBaseState
 
     public override void UpdateState(SpiderStateManager spiderStateManager)
     {
-
-
+        /*
         if (spiderStateManager.player.leftController.TryGetFeatureValue(CommonUsages.triggerButton, out bool triggerValue) && triggerValue)
         {
             spiderStateManager.SwitchStates(spiderStateManager.happyState);
@@ -32,6 +30,7 @@ public class SpiderSadState : SpiderBaseState
         {
             spiderStateManager.SwitchStates(spiderStateManager.happyState);
         }
+        */
     }
 
 }

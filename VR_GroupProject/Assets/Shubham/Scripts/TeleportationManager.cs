@@ -14,7 +14,7 @@ public class TeleportationManager : MonoBehaviour
 
     bool isTeleportationActive;
 
-    // Start is called before the first frame update
+
     void Start()
     {
         rayInteractor.enabled = false;
@@ -32,7 +32,7 @@ public class TeleportationManager : MonoBehaviour
         thumbstick.Enable();
     }
 
-    // Update is called once per frame
+
     void Update()
     {
         if (!isTeleportationActive)
@@ -40,6 +40,7 @@ public class TeleportationManager : MonoBehaviour
 
         if (thumbstick.triggered)
             return;
+
 
         if (!rayInteractor.TryGetCurrent3DRaycastHit(out RaycastHit hit))
         {
@@ -50,10 +51,14 @@ public class TeleportationManager : MonoBehaviour
 
         TeleportRequest teleportRequest = new TeleportRequest()
         {
-            destinationPosition = hit.point
+            destinationPosition = hit.point,
+            destinationRotation = this.transform.rotation
         };
 
         teleportationProvider.QueueTeleportRequest(teleportRequest);
+
+        rayInteractor.enabled = false;
+        isTeleportationActive = false;
     }
 
     void OnTeleportActivate(InputAction.CallbackContext context)
