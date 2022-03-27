@@ -4,6 +4,7 @@ using UnityEngine.XR.Interaction.Toolkit;
 
 public class TeleportationManager : MonoBehaviour
 {
+
     [SerializeField] InputActionAsset inputActionAsset;
     [SerializeField] TeleportationProvider teleportationProvider;
     [SerializeField] XRRayInteractor rayInteractor;
@@ -13,7 +14,6 @@ public class TeleportationManager : MonoBehaviour
     InputAction thumbstick;
 
     bool isTeleportationActive;
-
 
     void Start()
     {
