@@ -59,12 +59,7 @@ public class SpiderStateManager : MonoBehaviour
 
     void GenerateNextState()
     {
-        nextState = Mathf.FloorToInt(Random.Range(1f, 5f));
-
-        if(nextState == 5)
-        {
-            nextState = 4;
-        }
+        nextState = Mathf.RoundToInt(Random.Range(1f, 4f));
 
         if (nextState == 1 && (currentStateNumber == 5 || currentStateNumber == 6))
         {
@@ -72,7 +67,7 @@ public class SpiderStateManager : MonoBehaviour
         }
         else
         {
-            ;
+            nextState = nextState = Mathf.RoundToInt(Random.Range(2f, 4f));
         }
 
         switch (nextState)
