@@ -1,6 +1,4 @@
-﻿
-using System.Collections;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.AI;
 
 public class SpiderAI : MonoBehaviour
@@ -14,60 +12,66 @@ public class SpiderAI : MonoBehaviour
     public float health;
 
     //Patroling
-    [SerializeField] Vector3 walkPoint;
-    [SerializeField] bool walkPointSet;
+    Vector3 walkPoint;
+    bool walkPointSet;
     public float walkPointRange;
 
     //States
-    public float sightRange;
-    public bool playerInSightRange;
+    public float sightRange, foundRange;
+    bool playerInSightRange;
+    bool playerFound;
 
-    //Animator animator;
+    public Animator animator;
+
+    bool playerSpotted;
 
     private void Start()
     {
-        InvokeRepeating("SearchWalkPoint", 0f, 5f);
-
-        /*
-        walkPointSet = false;
-
-        playerInSightRange = false;
-        playerInAttackRange = false;
-        */
-    }
-
-    private void OnTriggerEnter(Collider other)
-    {
-        if (other.CompareTag("Player"))
-        {
-            playerInSightRange = true;
-
-            print("Found player");
-        }
-    }
-
-    private void OnTriggerExit(Collider other)
-    {
-        if (other.CompareTag("Player"))
-        {
-            playerInSightRange = false;
-        }
+        InvokeRepeating("SearchWalkPoint", 5f, 10f);
     }
 
     private void Update()
     {
-        if (!playerInSightRange) Patroling();
-        if (playerInSightRange) ChasePlayer();
+        playerFound = Physics.CheckSphere(transform.position, foundRange, whatIsPlayer);
+        if (playerFound)
+        {
+            animator.SetBool("isWalking", false);
+        }
+
+        else
+        {
+            animator.SetBool("isWalking", true);
+
+            playerSpotted = Physics.CheckSphere(transform.position, sightRange, whatIsPlayer);
+
+            if (playerSpotted)
+            {
+                playerInSightRange = true;
+            }
+            else
+            {
+                playerInSightRange = false;
+            }
+
+            if (!playerInSightRange) Patroling();
+            if (playerInSightRange) ChasePlayer();
+        }
+    }
+
+    private void SearchWalkPoint()
+    {
+        //Calculate random point in range
+        float randomZ = Random.Range(-walkPointRange, walkPointRange);
+        float randomX = Random.Range(-walkPointRange, walkPointRange);
+
+        walkPoint = new Vector3(transform.position.x + randomX, transform.position.y, transform.position.z + randomZ);
+
+        walkPointSet = true;
     }
 
     private void Patroling()
     {
-        //animator.SetBool("playerInRange", false);
-
-        //print("Patroling");
-
-        
-        //if (!walkPointSet) SearchWalkPoint();
+        animator.Play("walk");
 
         if (walkPointSet)
             agent.SetDestination(walkPoint);
@@ -80,26 +84,12 @@ public class SpiderAI : MonoBehaviour
             walkPointSet = false;
         }
     }
-    private void SearchWalkPoint()
-    {
-        //Calculate random point in range
-        float randomZ = Random.Range(-walkPointRange, walkPointRange);
-        float randomX = Random.Range(-walkPointRange, walkPointRange);
-
-        walkPoint = new Vector3(transform.position.x + randomX, transform.position.y, transform.position.z + randomZ);
-
-        walkPointSet = true;
-        print("New destination calculated!");
-    }
+    
 
     private void ChasePlayer()
     {
-        agent.SetDestination(player.position);
-    }
+        animator.Play("walk");
 
-    private void OnDrawGizmosSelected()
-    {
-        Gizmos.color = Color.yellow;
-        Gizmos.DrawWireSphere(transform.position, sightRange);
+        agent.SetDestination(player.position);
     }
 }
