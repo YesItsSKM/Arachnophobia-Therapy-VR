@@ -9,7 +9,7 @@ public class StartMenuManager : MonoBehaviour
     public Animator animator;
     public GameObject fadingPanel;
 
-    public Canvas mainPanel, loadingPanel;
+    public Canvas mainPanel, instructionsPanel, loadingPanel;
 
     public TextMeshProUGUI loadingPercentage;
     public Slider loadingBar;
@@ -17,15 +17,48 @@ public class StartMenuManager : MonoBehaviour
 
     [SerializeField] int sceneIndex = 1;
 
+    bool instructionsShown;
+
     private void Start()
     {
         mainPanel.enabled = true;
         loadingPanel.enabled = false;
+        instructionsPanel.enabled = false;
+
+        instructionsShown = false;
     }
 
     public void StartGame()
     {
         StartCoroutine(LoadAsync(sceneIndex));        
+    }
+
+    public void ShowInstructions()
+    {
+        if (!instructionsShown)
+        {
+            instructionsShown = true;
+
+            mainPanel.enabled = false;
+            loadingPanel.enabled = false;
+
+            instructionsPanel.enabled = true;
+        }
+
+        else
+        {
+            instructionsShown = false;
+
+            mainPanel.enabled = true;
+            loadingPanel.enabled = false;
+
+            instructionsPanel.enabled = false;
+        }
+    }
+
+    public void ExitGame()
+    {
+        Application.Quit();
     }
 
     IEnumerator LoadAsync(int sceneIndex)
@@ -39,8 +72,6 @@ public class StartMenuManager : MonoBehaviour
 
         while (!operation.isDone)
         {
-            //Debug.Log(operation.progress);
-
             loading = Mathf.Clamp01(operation.progress / 0.9f);
 
             loadingBar.value = loading;
