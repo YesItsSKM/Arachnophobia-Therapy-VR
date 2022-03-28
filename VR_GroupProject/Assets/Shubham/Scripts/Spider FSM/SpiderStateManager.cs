@@ -66,6 +66,15 @@ public class SpiderStateManager : MonoBehaviour
             nextState = 4;
         }
 
+        if (nextState == 1 && (currentStateNumber == 5 || currentStateNumber == 6))
+        {
+            nextState = 1;
+        }
+        else
+        {
+            ;
+        }
+
         switch (nextState)
         {
             case 1:

@@ -7060,7 +7060,7 @@ MonoBehaviour:
   whatIsPlayerHands:
     serializedVersion: 2
     m_Bits: 512
-  currentStateNumber: 0
+  currentStateNumber: 1
   moodChangeFrequency: 10
   spiderMoodText: {fileID: 154026687}
   spiderMood: {fileID: 424096012}
@@ -10305,7 +10305,7 @@ MonoBehaviour:
   m_InteractionLayers:
     m_Bits: 1
   m_SelectMode: 1
-  m_CustomReticle: {fileID: 0}
+  m_CustomReticle: {fileID: 6733720859912339855, guid: a09572b837413f6439eb3d94e36a28b1, type: 3}
   m_FirstHoverEntered:
     m_PersistentCalls:
       m_Calls: []
