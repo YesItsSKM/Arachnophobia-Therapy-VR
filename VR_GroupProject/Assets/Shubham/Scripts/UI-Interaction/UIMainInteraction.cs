@@ -8,17 +8,15 @@ public class UIMainInteraction : MonoBehaviour
     {
         GameObject pills = Instantiate(spawnObjects[0], this.transform.position + new Vector3(0f, 0.5f, 0f), new Quaternion(0f, 0f, 0f, 0f));
 
-        //print(pills.transform.name + pills.transform.tag);
-
         Destroy(pills, 30f);
     }
 
     public void SpawnCake()
     {
-        GameObject cake = Instantiate(spawnObjects[1], this.transform.position + new Vector3(0f, 0.5f, 0f), new Quaternion(0f, 0f, 0f, 0f));
+        int index = Mathf.RoundToInt(Random.Range(1f, 2f));
 
-        //print(cake.transform.name + cake.transform.tag);
+        GameObject food = Instantiate(spawnObjects[index], this.transform.position + new Vector3(0f, 0.5f, 0f), new Quaternion(0f, 0f, 0f, 0f));
 
-        Destroy(cake, 30f);
+        Destroy(food, 30f);
     }
 }
