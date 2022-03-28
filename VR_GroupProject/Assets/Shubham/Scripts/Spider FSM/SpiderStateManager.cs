@@ -8,11 +8,18 @@ public class SpiderStateManager : MonoBehaviour
 
     [SerializeField] SpiderBaseState currentState;
     
-    public SpiderIdleState idleState = new SpiderIdleState();       // 1
-    public SpiderSadState sadState = new SpiderSadState();          // 2
-    public SpiderHappyState happyState = new SpiderHappyState();    // 3
+    public SpiderIdleState idleState = new SpiderIdleState();           // 1
 
-    public int nextState = 1;                                       // idle
+    public SpiderHungryState hungryState = new SpiderHungryState();     // 2
+    public SpiderSickState sickState = new SpiderSickState();           // 3
+    public SpiderSadState sadState = new SpiderSadState();              // 4
+
+    public SpiderHappyState happyState = new SpiderHappyState();        // 5
+    public SpiderLovedState lovedState = new SpiderLovedState();        // 6
+
+
+    public int currentStateNumber;
+    int nextState = 1;                                           // idle
     public float moodChangeFrequency = 5f;
 
     public TextMeshProUGUI spiderMoodText;
@@ -26,10 +33,6 @@ public class SpiderStateManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        //spiderMoodText = FindObjectOfType<TextMeshProUGUI>();
-
-        //spiderMoodText.text = "Happy!";
-
         currentState = idleState;
 
         currentState.EnterState(this);
@@ -53,14 +56,12 @@ public class SpiderStateManager : MonoBehaviour
 
     void GenerateNextState()
     {
-        nextState = Mathf.FloorToInt(Random.Range(1f, 4f));
+        nextState = Mathf.FloorToInt(Random.Range(1f, 5f));
 
-        if(nextState == 4)
+        if(nextState == 5)
         {
-            nextState = 3;
+            nextState = 4;
         }
-
-        // print("nextState: " + nextState);
 
         switch (nextState)
         {
@@ -69,11 +70,15 @@ public class SpiderStateManager : MonoBehaviour
                 break;
 
             case 2:
-                SwitchStates(sadState);
+                SwitchStates(hungryState);
                 break;
 
             case 3:
-                //SwitchStates(happyState);
+                SwitchStates(sickState);
+                break;
+
+            case 4:
+                SwitchStates(sadState);
                 break;
 
             default:

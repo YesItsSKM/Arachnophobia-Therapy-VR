@@ -1,18 +1,18 @@
-// State #5
+// State #6
 
 using UnityEngine;
 
-public class SpiderHappyState : SpiderBaseState
+public class SpiderLovedState : SpiderBaseState
 {
 
     public override void EnterState(SpiderStateManager spiderStateManager)
     {
-        spiderStateManager.currentStateNumber = 5;
+        spiderStateManager.currentStateNumber = 6;
 
-        spiderStateManager.spiderMoodText.text = "Happy!";
+        spiderStateManager.spiderMoodText.text = "Loved!";
 
         spiderStateManager.spiderMood.enabled = true;
-        spiderStateManager.spiderMood.sprite = spiderStateManager.moods[3];
+        spiderStateManager.spiderMood.sprite = spiderStateManager.moods[4];
 
         spiderStateManager.spiderAnimator.Play("Jump");
     }

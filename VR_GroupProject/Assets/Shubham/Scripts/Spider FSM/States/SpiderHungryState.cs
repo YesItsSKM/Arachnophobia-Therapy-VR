@@ -1,18 +1,18 @@
-// State #4
+// State #2
 
 using UnityEngine;
 
-public class SpiderSadState : SpiderBaseState
+public class SpiderHungryState : SpiderBaseState
 {
 
     public override void EnterState(SpiderStateManager spiderStateManager)
     {
-        spiderStateManager.currentStateNumber = 4;
+        spiderStateManager.currentStateNumber = 2;
 
-        spiderStateManager.spiderMoodText.text = "Sad";
+        spiderStateManager.spiderMoodText.text = "Hungry";
 
         spiderStateManager.spiderMood.enabled = true;
-        spiderStateManager.spiderMood.sprite = spiderStateManager.moods[2];
+        spiderStateManager.spiderMood.sprite = spiderStateManager.moods[0];
 
         spiderStateManager.spiderAnimator.Play("LowerBUpdate");
     }

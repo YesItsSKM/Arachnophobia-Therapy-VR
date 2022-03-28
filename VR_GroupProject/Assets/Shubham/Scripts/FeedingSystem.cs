@@ -6,12 +6,15 @@ public class FeedingSystem : MonoBehaviour
 
     void OnTriggerEnter(Collider collision)
     {
-        //print(collision.transform.name);
-
-        if (collision.transform.CompareTag("Edible"))
+        if (spiderState.currentStateNumber == 2 && (collision.transform.CompareTag("Edible")))
         {
-            //print(collision.transform.name + " " + collision.transform.tag);
+            Destroy(collision.transform.gameObject, 0.1f);
 
+            spiderState.SwitchStates(spiderState.happyState);
+        }
+
+        else if (spiderState.currentStateNumber == 3 && (collision.transform.CompareTag("Pills")))
+        {
             Destroy(collision.transform.gameObject, 0.1f);
 
             spiderState.SwitchStates(spiderState.happyState);
