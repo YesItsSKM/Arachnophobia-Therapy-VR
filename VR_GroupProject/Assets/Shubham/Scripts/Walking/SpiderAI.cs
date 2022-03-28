@@ -9,7 +9,7 @@ public class SpiderAI : MonoBehaviour
 
     public LayerMask whatIsGround, whatIsPlayer;
 
-    public float health;
+    //public float health;
 
     //Patroling
     Vector3 walkPoint;

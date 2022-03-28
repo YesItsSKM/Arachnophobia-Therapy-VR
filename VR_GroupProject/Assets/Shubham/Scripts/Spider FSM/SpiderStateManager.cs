@@ -5,8 +5,9 @@ using TMPro;
 public class SpiderStateManager : MonoBehaviour
 {
     public HandAnimation player;
+    public LayerMask whatIsPlayerHands;
 
-    [SerializeField] SpiderBaseState currentState;
+    SpiderBaseState currentState;
     
     public SpiderIdleState idleState = new SpiderIdleState();           // 1
 
@@ -26,6 +27,8 @@ public class SpiderStateManager : MonoBehaviour
 
     public Image spiderMood;
     public Sprite[] moods;
+
+    public float pettingRange;
 
     public Animator spiderAnimator;
 
@@ -84,5 +87,11 @@ public class SpiderStateManager : MonoBehaviour
             default:
                 break;
         }
+    }
+
+    private void OnDrawGizmosSelected()
+    {
+        Gizmos.color = Color.red;
+        Gizmos.DrawWireSphere(transform.position, pettingRange);
     }
 }

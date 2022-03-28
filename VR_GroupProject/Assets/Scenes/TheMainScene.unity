@@ -7057,8 +7057,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 715540453}
-  nextState: 1
-  moodChangeFrequency: 5
+  whatIsPlayerHands:
+    serializedVersion: 2
+    m_Bits: 512
+  currentStateNumber: 0
+  moodChangeFrequency: 10
   spiderMoodText: {fileID: 154026687}
   spiderMood: {fileID: 424096012}
   moods:
@@ -7067,6 +7070,7 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 2f26884d00972458e8809ba845b79b5c, type: 3}
   - {fileID: 21300000, guid: 5b103ed18932c4244b6e542df519fc1f, type: 3}
   - {fileID: 21300000, guid: c3f6063e24c114f8cbb162b489bcb506, type: 3}
+  pettingRange: 0.5
   spiderAnimator: {fileID: 849956446}
 --- !u!95 &849956446
 Animator:
@@ -7189,7 +7193,6 @@ MonoBehaviour:
   whatIsPlayer:
     serializedVersion: 2
     m_Bits: 256
-  health: 100
   walkPointRange: 15
   sightRange: 10
   foundRange: 3

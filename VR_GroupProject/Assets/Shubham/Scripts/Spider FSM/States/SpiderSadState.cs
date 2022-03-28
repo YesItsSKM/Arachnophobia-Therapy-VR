@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class SpiderSadState : SpiderBaseState
 {
-
     public override void EnterState(SpiderStateManager spiderStateManager)
     {
         spiderStateManager.currentStateNumber = 4;
@@ -19,17 +18,10 @@ public class SpiderSadState : SpiderBaseState
 
     public override void UpdateState(SpiderStateManager spiderStateManager)
     {
-        /*
-        if (spiderStateManager.player.leftController.TryGetFeatureValue(CommonUsages.triggerButton, out bool triggerValue) && triggerValue)
+        if (Physics.CheckSphere(spiderStateManager.gameObject.transform.position, spiderStateManager.pettingRange, spiderStateManager.whatIsPlayerHands))
         {
-            spiderStateManager.SwitchStates(spiderStateManager.happyState);
+            spiderStateManager.SwitchStates(spiderStateManager.lovedState);
         }
-
-        if (spiderStateManager.player.rightController.TryGetFeatureValue(CommonUsages.triggerButton, out bool triggerVal) && triggerVal)
-        {
-            spiderStateManager.SwitchStates(spiderStateManager.happyState);
-        }
-        */
     }
 
 }
